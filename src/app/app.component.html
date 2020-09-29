@@ -1,0 +1,171 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<h1>Car Service Booking</h1>
+ 
+<form [formGroup]="ServiceForm" >
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Customer Name :<span class="reqField">*</span> </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Name" id="name" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Phone Number : </label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" placeholder="Phone Number" id="name">
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email :</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" placeholder="abc@example.com" id="email">
+    </div>
+  </div> 
+   <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Vehicle Registration Number :<span class="reqField">*</span></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="Vehicle number" id="regisrationNumber" pattern="[a-zA-Z0-9-]+" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Brand : <span class="reqField">*</span></label>
+    <div class="col-sm-10">
+    <select  class="form-control" id="name" required>
+    <option value="">Please Select</option>
+      <option *ngFor="let list of brandList">{{ list }}</option>
+    </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Model :<span class="reqField">*</span></label>
+    <div class="col-sm-10">
+    <select  class="form-control" id="name" required>
+    <option value="">Please Select</option>
+      <option *ngFor="let list of modelList">{{ list }}</option>
+    </select>
+    </div>
+  </div>
+  <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Fuel Type :<span class="reqField">*</span></legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="fuel" id="fuel" value="Petrol" required>
+          <label class="form-check-label" for="fuel">      Petrol 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="fuel" id="fuel" value="Diesel" required>
+          <label class="form-check-label" for="fuel">
+            Diesel
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="fuel" id="fuel" value="Gas" required>
+          <label class="form-check-label" for="fuel">
+            Gas
+          </label>
+        </div>
+      </div>
+    </div>
+     <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Date :<span class="reqField">*</span></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="date" required>
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Time :</label>
+    <div class="col-sm-10">
+      <input type="time" class="form-control" id="name" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">PickUp and drop : <span class="reqField">*</span></div>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck1" required> 
+        <label class="form-check-label" for="name">
+          Pick up
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="name" required>
+        <label class="form-check-label" for="name">
+          Drop
+        </label>
+      </div>
+    </div>
+  </div>
+   <!-- Alert :: start -->
+       <alert
+       *ngIf="alertMsg === true"
+       type="success"
+       dismissOnTimeout="3000"
+       (onClosed)="alertMsg = true"
+     >
+       Service booking done successfully!!
+     </alert>
+     <alert
+       *ngIf="alertMsg === false"
+       type="warning"
+       dismissOnTimeout="3000"
+       (onClosed)="alertMsg = false"
+     >
+       Error found.
+     </alert>
+    <!-- Alert :: End -->
+  <div class="form-group row">   
+    <div class="col-sm-10" style="text-align: center">
+      <button type="submit" class="btn btn-primary" (click)="openModal(template)">Book Service</button>
+    </div>
+  </div>
+  </form>
+
+  <ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <p> Are you sure to book the service ? </p><br>
+    <button type="reset" class="btn btn-danger float-right" (click)="modalRef.hide()">No</button>
+    <button type="submit" class="btn btn-success float-right" (click)="onFormSubmit(ServiceForm.value)" (click)="modalRef.hide()" >Yes</button>
+  </div>
+</ng-template>
+
+ <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Vehicle Number</th>
+      <th scope="col">Brand </th>
+      <th scope="col">Type</th>
+       <th scope="col">Fuel </th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Pick and drop</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of ServiceList; let i=index">
+    <tr>
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ data.name }}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.vehicleNumber }}</td>
+      <td>{{ data.brand }}</td>
+      <td>{{ data.model }}</td>
+      <td>{{ data.fuel }}</td>
+      <td>{{ data.date }}</td>
+      <td>{{ data.time }}</td>
+      <td>{{ data.pickup }}</td>
+      <td><button class="btn btn-danger" (click)="onDelete(data.id)">Cancel</button></td>
+    </tr>
+  </tbody>
+</table>
