@@ -1,34 +1,36 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<h1>Car Service Booking</h1>
- 
+<h1 style="text-align: center">Online Car Service Booking</h1>
+ <div style="background-color: lightgrey">
 <form [formGroup]="ServiceForm" >
   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Customer Name :<span class="reqField">*</span> </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Name" id="name" >
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Customer Name :<span class="reqField">*</span> </label>
+    <div class="col-sm-8 col-md-8">
+      <input type="text" class="form-control" placeholder="Name" id="name"  onkeypress="return /[a-z]/i.test(event.key)">
     </div>
   </div>
   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Phone Number : </label>
-    <div class="col-sm-10">
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Phone Number : </label>
+    <div class="col-sm-8 col-md-8">
       <input type="number" class="form-control" placeholder="Phone Number" id="name">
     </div>
   </div>
    <div class="form-group row">
-    <label for="email" class="col-sm-2 col-form-label">Email :</label>
-    <div class="col-sm-10">
+    <label for="email" class="col-sm-4 col-md-4 col-form-label">Email :</label>
+    <div class="col-sm-8 col-md-8">
       <input type="email" class="form-control" placeholder="abc@example.com" id="email">
     </div>
   </div> 
    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Vehicle Registration Number :<span class="reqField">*</span></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Vehicle number" id="regisrationNumber" pattern="[a-zA-Z0-9-]+" required>
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Vehicle Registration Number :<span class="reqField">*</span></label>
+    <div class="col-sm-8 col-md-8">
+      <input type="text" class="form-control" placeholder="Vehicle number" id="regisrationNumber" onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
+      
+      pattern="[a-zA-Z0-9-]+" required>
     </div>
   </div>
   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Brand : <span class="reqField">*</span></label>
-    <div class="col-sm-10">
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Brand : <span class="reqField">*</span></label>
+    <div class="col-sm-8 col-md-8">
     <select  class="form-control" id="name" required>
     <option value="">Please Select</option>
       <option *ngFor="let list of brandList">{{ list }}</option>
@@ -36,8 +38,8 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Model :<span class="reqField">*</span></label>
-    <div class="col-sm-10">
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Model :<span class="reqField">*</span></label>
+    <div class="col-sm-8 col-md-8">
     <select  class="form-control" id="name" required>
     <option value="">Please Select</option>
       <option *ngFor="let list of modelList">{{ list }}</option>
@@ -45,8 +47,8 @@
     </div>
   </div>
   <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Fuel Type :<span class="reqField">*</span></legend>
-      <div class="col-sm-10">
+      <legend class="col-form-label col-sm-4 col-md-4 pt-0">Fuel Type :<span class="reqField">*</span></legend>
+      <div class="col-sm-8 col-md-8">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="fuel" id="fuel" value="Petrol" required>
           <label class="form-check-label" for="fuel">      Petrol 
@@ -67,20 +69,20 @@
       </div>
     </div>
      <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Date :<span class="reqField">*</span></label>
-    <div class="col-sm-10">
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Date :<span class="reqField">*</span></label>
+    <div class="col-sm-8 col-md-8">
       <input type="date" class="form-control" id="date" required>
     </div>
   </div>
    <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Time :</label>
-    <div class="col-sm-10">
+    <label for="name" class="col-sm-4 col-md-4 col-form-label">Time :</label>
+    <div class="col-sm-8 -col-md-8">
       <input type="time" class="form-control" id="name" required>
     </div>
   </div>
   <div class="form-group row">
-    <div class="col-sm-2">PickUp and drop : <span class="reqField">*</span></div>
-    <div class="col-sm-10">
+    <div class="col-sm-4 col-md-4">PickUp and drop : <span class="reqField">*</span></div>
+    <div class="col-sm-8 col-md-8">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="gridCheck1" required> 
         <label class="form-check-label" for="name">
@@ -119,6 +121,7 @@
     </div>
   </div>
   </form>
+ </div><br><br>
 
   <ng-template #template>
   <div class="modal-header">
@@ -134,6 +137,8 @@
   </div>
 </ng-template>
 
+
+<h3 style="text-align: center">Car Service List</h3><br>
  <table class="table table-hover">
   <thead>
     <tr>

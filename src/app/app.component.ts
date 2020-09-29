@@ -109,7 +109,5 @@ export class AppComponent  {
    onFormSubmit(data: any) {
      this.alertMsg = true;
      console.log(data);
-  }
-
-  
+  } 
 }
