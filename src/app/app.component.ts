@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
       brand: "Honda",
       model: "city",
       fuel: "Petrol",
-      date: "01-Oct-2020",
+      date: "28-Sep-2020",
       time: "10:00 AM",
       pickup:"yes"
     },
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
       brand: "Volkswagen",
       model: "polo",
       fuel: "Petrol",
-      date: "02-Oct-2020",
+      date: "27-Sep-2020",
       time: "11:00 AM",
       pickup:"No"
     },
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
       brand: "Hyundai",
       model: "Santro",
       fuel: "Petrol",
-      date: "30-Sep-2020",
+      date: "26-Sep-2020",
       time: "10:30 AM",
       pickup:"yes"
     },
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
       brand: "Maruti",
       model: "Breeza",
       fuel: "Petrol",
-      date: "04-Oct-2020",
+      date: "25-Sep-2020",
       time: "10:00 AM",
       pickup:"No"
     }
