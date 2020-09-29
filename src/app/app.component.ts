@@ -97,8 +97,7 @@ export class AppComponent  {
       date: "04-Oct-2020",
       time: "10:00 AM",
       pickup:"No"
-    },
-
+    }
   ]
 
   constructor(private modalService: BsModalService, private formBuilder: FormBuilder) {}
