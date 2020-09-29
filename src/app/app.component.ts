@@ -21,6 +21,7 @@ export class AppComponent  {
 
   ServiceList: any[] = [
     {
+      id: 1,
       name: "John",
       phoneNumber: "9944108840",
       email: "john@gmail.com",
@@ -33,6 +34,7 @@ export class AppComponent  {
       pickup:"yes"
     },
     {
+       id: 2,
       name: "Sam",
       phoneNumber: "9278108840",
       email: "Sam@gmail.com",
@@ -45,6 +47,7 @@ export class AppComponent  {
       pickup:"No"
     },
     {
+       id: 3,
       name: "Karthik",
       phoneNumber: "9944109837",
       email: "karthik@gmail.com",
@@ -57,6 +60,7 @@ export class AppComponent  {
       pickup:"yes"
     },
     {
+       id: 4,
       name: "Kevin",
       phoneNumber: "99444931686",
       email: "kevin@gmail.com",
@@ -69,6 +73,7 @@ export class AppComponent  {
       pickup:"No"
     },
     {
+       id: 5,
       name: "Murugan",
       phoneNumber: "9832765436",
       email: "mohanth@gmail.com",
@@ -81,6 +86,7 @@ export class AppComponent  {
       pickup:"yes"
     },
     {
+       id: 6,
       name: "Kannan",
       phoneNumber: "8667661419",
       email: "Kannan@gmail.com",
