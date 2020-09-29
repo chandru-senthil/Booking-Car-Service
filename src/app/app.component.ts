@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
  
@@ -10,11 +12,13 @@ import { Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
   //component
   modalRef: BsModalRef;
   ServiceForm: FormGroup = new FormGroup({});
+   submitted: boolean = false;
   alertMsg: boolean | undefined = undefined;
+  dataArray: any[] = [];
 
   brandList: string[] = ["BMW","Hyundai","Honda","Maruti Suzuki"];
   modelList: string[] = ["Swift Dzire","Breeza","Baleno","honda city","Verna","hyundai i20","hyundai santro"];
@@ -101,6 +105,21 @@ export class AppComponent  {
   ]
 
   constructor(private modalService: BsModalService, private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.ServiceForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      phoneNumber: new FormControl(''),
+      email: new FormControl(''),
+      vehicleNumber: new FormControl('', Validators.required),
+      brand: new FormControl('', Validators.required),
+      model: new FormControl('', Validators.required),
+      fuel: new FormControl('', Validators.required),
+      date: new FormControl('', Validators.required),
+      time: new FormControl('', Validators.required),
+      pickUp: new FormControl('', Validators.required),
+    });
+  }
  
   openModal(template: any) {
     this.modalRef = this.modalService.show(template);
@@ -112,7 +131,22 @@ export class AppComponent  {
   }
 
    onFormSubmit(data: any) {
-     this.alertMsg = true;
-     console.log(data);
+     this.submitted = true;
+
+   if (this.ServiceForm.invalid) {
+      this.alertMsg = false;
+      return;
+    }
+   this.alertMsg = true;
+   this.dataArray.push(data);
+   console.log(this.dataArray);
   } 
+
+   get f() {
+    return this.ServiceForm.controls;
+  }
+
+   hasError = (controlName: string, errorName: string) => {
+    return this.ServiceForm.controls[controlName].hasError(errorName);
+  };
 }
