@@ -100,10 +100,7 @@ export class AppComponent  {
   openModal(template: any) {
     this.modalRef = this.modalService.show(template);
   }
-  onclose(){
-    window.location.reload();
-  }
-
+ 
   onDelete(id: any){
      let index =this.ServiceList.findIndex((x: any) => x.id === id);
        this.ServiceList.splice(index, 1);  
