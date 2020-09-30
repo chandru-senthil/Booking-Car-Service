@@ -75,7 +75,7 @@
       formControlName="model"                 
       [ngClass]="{ 'is-invalid': submitted && f.model.errors }">
       <option value="">Please Select</option>
-      <option *ngFor="let list of modelList">{{ list }}</option>
+      <option *ngFor="let list of modelArray">{{ list }}</option>
     </select>
     <div  *ngIf="submitted && f.model.errors"  class="invalid-feedback" >
              <div *ngIf="f.model.errors.required">Model is required</div>
