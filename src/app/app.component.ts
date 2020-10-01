@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
  
 
 @Component({
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   dataArray: any[] = [];
 
   brandList: string[] = ["BMW","Hyundai","Honda","Maruti Suzuki"];
-  modelList: string[] = ["Swift Dzire","Breeza","Baleno","honda city","Verna","hyundai i20","hyundai santro"];
+  modelList : string [] = [];
+  // modelList: string[] = ["Swift Dzire","Breeza","Baleno","honda city","Verna","hyundai i20","hyundai santro"];
 
   modelArray: any[] = [];
 
@@ -107,7 +108,7 @@ export class AppComponent implements OnInit {
     }
   ]
 
-  constructor(private modalService: BsModalService, private formBuilder: FormBuilder) {}
+  constructor(private modalService: BsModalService, private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
     this.ServiceForm = new FormGroup({
@@ -123,12 +124,17 @@ export class AppComponent implements OnInit {
       pickUp: new FormControl('', Validators.required),
     });
 
-  //   this.http.get('/assets/data/brand.json').subscribe((response: any)=> {
-  //    this.modelArray = response.hyundai;  
-  // });
-    }
+    this.http.get('/assets/data/brand.json').subscribe((response: any)=> {
+     this.modelArray = response.cars;
+    });
+  }
 
-  
+    onBrandChange(brand:any){
+       // @ts-ignore TS2532
+    this.modelList = this.modelArray.find(
+      (data: any) => data.brand === brand
+    ).model;
+  }  
  
   openModal(template: any) {
     this.modalRef = this.modalService.show(template);

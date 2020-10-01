@@ -1,0 +1,21 @@
+{
+  "cars": [
+        {
+         "brand": "BMW",
+         "model": ["X50", "dcd 50i"]
+        },
+        {
+          "brand": "Hyundai",
+          "model": ["i10", "i20","Santro","Verna"]
+        },
+        {
+          "brand": "Honda",
+          "model": ["City", "Turbo"]
+        } ,
+        {
+          "brand": "Maruti Suzuki",
+          "model": ["Swift", "Swift Dzire", "Breeza","Baleno","Eco","Alto"]
+        }       
+    ]
+}
+  
