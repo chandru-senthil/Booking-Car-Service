@@ -5,7 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
  
 
 @Component({
@@ -107,8 +107,7 @@ export class AppComponent implements OnInit {
     }
   ]
 
-  constructor(private modalService: BsModalService, private formBuilder: FormBuilder,
-  private http: HttpClient) {}
+  constructor(private modalService: BsModalService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.ServiceForm = new FormGroup({
@@ -124,9 +123,9 @@ export class AppComponent implements OnInit {
       pickUp: new FormControl('', Validators.required),
     });
 
-    this.http.get('/assets/data/brand.json').subscribe((response: any)=> {
-     this.modelArray = response.hyundai;  
-  });
+  //   this.http.get('/assets/data/brand.json').subscribe((response: any)=> {
+  //    this.modelArray = response.hyundai;  
+  // });
     }
 
   
