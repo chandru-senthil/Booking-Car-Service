@@ -23,8 +23,6 @@ export class AppComponent implements OnInit {
 
   brandList: string[] = ["BMW","Hyundai","Honda","Maruti Suzuki"];
   modelList : string [] = [];
-  // modelList: string[] = ["Swift Dzire","Breeza","Baleno","honda city","Verna","hyundai i20","hyundai santro"];
-
   modelArray: any[] = [];
 
   ServiceList: any[] = [
