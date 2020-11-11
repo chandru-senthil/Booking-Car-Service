@@ -1,260 +1,252 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 
 <h1 style="text-align: center">Online Car Service Booking</h1>
- <div style="background-color: lightgrey">
-<form [formGroup]="ServiceForm" >
-  <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Customer Name :<span class="reqField">*</span> </label>
-    <div class="col-sm-8 col-md-8">
-      <input 
-       type="text" 
+<div style="background-color: lightgrey">
+	<form [formGroup]="ServiceForm">
+		<div class="form-group row">
+			<label for="name" class="col-sm-4 col-md-4 col-form-label">Customer Name :<span class="reqField">*</span> </label>
+			<div class="col-sm-8 col-md-8">
+				<input
+       type="text"
        class="form-control"
-       placeholder="Name" 
-       id="name" 
+       placeholder="Name"
+       id="name"
        onkeypress="return /[a-z]/i.test(event.key)"
-       formControlName="name"                 
+       formControlName="name"
        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
        >
-        <div  *ngIf="submitted && f.name.errors"  class="invalid-feedback" >
-             <div *ngIf="f.name.errors.required">Name is required</div>
-          </div>
+				<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+					<div *ngIf="f.name.errors.required">Name is required</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="name" class="col-sm-4 col-md-4 col-form-label">Phone Number : </label>
+			<div class="col-sm-8 col-md-8">
+				<input type="number" class="form-control" placeholder="Phone Number" id="name"  formControlName="phoneNumber" >
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Phone Number : </label>
-    <div class="col-sm-8 col-md-8">
-      <input type="number" class="form-control" placeholder="Phone Number" id="name"  formControlName="phoneNumber" >
+			</div>
+			<div class="form-group row">
+				<label for="email" class="col-sm-4 col-md-4 col-form-label">Email :</label>
+				<div class="col-sm-8 col-md-8">
+					<input type="email" class="form-control" placeholder="abc@example.com" id="email"  formControlName="email" >
     </div>
-  </div>
-   <div class="form-group row">
-    <label for="email" class="col-sm-4 col-md-4 col-form-label">Email :</label>
-    <div class="col-sm-8 col-md-8">
-      <input type="email" class="form-control" placeholder="abc@example.com" id="email"  formControlName="email" >
-    </div>
-  </div> 
-   <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Vehicle Registration Number :<span class="reqField">*</span></label>
-    <div class="col-sm-8 col-md-8">
-      <input 
-        type="text" 
-        class="form-control" 
-        placeholder="Vehicle number" 
-        id="regisrationNumber" 
-        formControlName="vehicleNumber"                 
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-4 col-md-4 col-form-label">Vehicle Registration Number :<span class="reqField">*</span></label>
+					<div class="col-sm-8 col-md-8">
+						<input
+        type="text"
+        class="form-control"
+        placeholder="Vehicle number"
+        id="regisrationNumber"
+        formControlName="vehicleNumber"
         [ngClass]="{ 'is-invalid': submitted && f.vehicleNumber.errors }"
         onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
       >
-      <div  *ngIf="submitted && f.vehicleNumber.errors"  class="invalid-feedback" >
-             <div *ngIf="f.vehicleNumber.errors.required">Vehicle Number is required</div>
-          </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Brand : <span class="reqField">*</span></label>
-    <div class="col-sm-8 col-md-8">
-    <select  
-      class="form-control" 
-      id="name" 
-      formControlName="brand"  
-       (ngModelChange)="onBrandChange($event)"               
+						<div *ngIf="submitted && f.vehicleNumber.errors" class="invalid-feedback">
+							<div *ngIf="f.vehicleNumber.errors.required">Vehicle Number is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-4 col-md-4 col-form-label">Brand : <span class="reqField">*</span></label>
+					<div class="col-sm-8 col-md-8">
+						<select
+      class="form-control"
+      id="name"
+      formControlName="brand"
+       (ngModelChange)="onBrandChange($event)"
       [ngClass]="{ 'is-invalid': submitted && f.brand.errors }">
     <option value="">Please Select</option>
       <option *ngFor="let list of brandList">{{ list }}</option>
     </select>
-    <div  *ngIf="submitted && f.brand.errors"  class="invalid-feedback" >
-             <div *ngIf="f.brand.errors.required">Brand is required</div>
-          </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Model :<span class="reqField">*</span></label>
-    <div class="col-sm-8 col-md-8">
-    <select  
+						<div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+							<div *ngIf="f.brand.errors.required">Brand is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-4 col-md-4 col-form-label">Model :<span class="reqField">*</span></label>
+					<div class="col-sm-8 col-md-8">
+						<select
       class="form-control"
-      id="name" 
-      formControlName="model"                 
+      id="name"
+      formControlName="model"
       [ngClass]="{ 'is-invalid': submitted && f.model.errors }">
       <option value="">Please Select</option>
       <option *ngFor="let list of modelList">{{ list }}</option>
     </select>
-    <div  *ngIf="submitted && f.model.errors"  class="invalid-feedback" >
-             <div *ngIf="f.model.errors.required">Model is required</div>
-          </div>
-    </div>
-  </div>
-  <div class="row">
-      <legend class="col-form-label col-sm-4 col-md-4 pt-0">Fuel Type :<span class="reqField">*</span></legend>
-      <div class="col-sm-8 col-md-8">
-        <div class="form-check">
-          <input
-            class="form-check-input" 
-            type="radio" 
-            name="fuel" 
-            id="fuel" 
+						<div *ngIf="submitted && f.model.errors" class="invalid-feedback">
+							<div *ngIf="f.model.errors.required">Model is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<legend class="col-form-label col-sm-4 col-md-4 pt-0">Fuel Type :<span class="reqField">*</span>
+					</legend>
+					<div class="col-sm-8 col-md-8">
+						<div class="form-check">
+							<input
+            class="form-check-input"
+            type="radio"
+            name="fuel"
+            id="fuel"
             value="Petrol"
-            formControlName="fuel"                 
+            formControlName="fuel"
            [ngClass]="{ 'is-invalid': submitted && f.fuel.errors }">
-          <label class="form-check-label" for="fuel">Petrol 
+							<label class="form-check-label" for="fuel">Petrol 
           </label>
-          <div  *ngIf="submitted && f.fuel.errors"  class="invalid-feedback" >
-             <div *ngIf="f.fuel.errors.required">Fuel is required</div>
-          </div>
-        </div>
-        <div class="form-check">
-          <input 
-            class="form-check-input" 
-            type="radio" name="fuel" 
-            id="fuel" value="Diesel" 
-            formControlName="fuel"                 
+							<div *ngIf="submitted && f.fuel.errors" class="invalid-feedback">
+								<div *ngIf="f.fuel.errors.required">Fuel is required</div>
+							</div>
+						</div>
+						<div class="form-check">
+							<input
+            class="form-check-input"
+            type="radio" name="fuel"
+            id="fuel" value="Diesel"
+            formControlName="fuel"
            [ngClass]="{ 'is-invalid': submitted && f.fuel.errors }">
-          <label class="form-check-label" for="fuel">
+							<label class="form-check-label" for="fuel">
             Diesel
           </label>
-          <div  *ngIf="submitted && f.fuel.errors"  class="invalid-feedback" >
-             <div *ngIf="f.fuel.errors.required">Fuel is required</div>
-          </div>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="fuel" id="fuel" value="Gas" 
-           formControlName="fuel"                 
+							<div *ngIf="submitted && f.fuel.errors" class="invalid-feedback">
+								<div *ngIf="f.fuel.errors.required">Fuel is required</div>
+							</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="fuel" id="fuel" value="Gas"
+           formControlName="fuel"
            [ngClass]="{ 'is-invalid': submitted && f.fuel.errors }">
-          <label class="form-check-label" for="fuel">
+							<label class="form-check-label" for="fuel">
             Gas
           </label>
-          <div  *ngIf="submitted && f.fuel.errors"  class="invalid-feedback" >
-             <div *ngIf="f.fuel.errors.required">Fuel is required</div>
-          </div>
-        </div>
-      </div>
-    </div>
-     <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Date :<span class="reqField">*</span></label>
-    <div class="col-sm-8 col-md-8">
-      <input 
-        type="date" 
-        class="form-control" 
-        id="date" 
-        formControlName="date"                 
+							<div *ngIf="submitted && f.fuel.errors" class="invalid-feedback">
+								<div *ngIf="f.fuel.errors.required">Fuel is required</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-4 col-md-4 col-form-label">Date :<span class="reqField">*</span></label>
+					<div class="col-sm-8 col-md-8">
+						<input
+        type="date"
+        class="form-control"
+        id="date"
+        formControlName="date"
         [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
       >
-      <div  *ngIf="submitted && f.date.errors"  class="invalid-feedback" >
-        <div *ngIf="f.date.errors.required">Date is required</div>
-      </div>
-    </div>
-  </div>
-   <div class="form-group row">
-    <label for="name" class="col-sm-4 col-md-4 col-form-label">Time :</label>
-    <div class="col-sm-8 -col-md-8">
-      <input 
-        type="time" 
-        class="form-control" 
-        id="name" 
-        formControlName="time"                 
+						<div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+							<div *ngIf="f.date.errors.required">Date is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-4 col-md-4 col-form-label">Time :</label>
+					<div class="col-sm-8 -col-md-8">
+						<input
+        type="time"
+        class="form-control"
+        id="name"
+        formControlName="time"
         [ngClass]="{ 'is-invalid': submitted && f.time.errors }">
-      <div  *ngIf="submitted && f.time.errors"  class="invalid-feedback" >
-        <div *ngIf="f.time.errors.required">Time is required</div>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-4 col-md-4">PickUp and drop : <span class="reqField">*</span></div>
-    <div class="col-sm-8 col-md-8">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1"  formControlName="pickUp"                 
-           [ngClass]="{ 'is-invalid': submitted && f.pickUp.errors }"> 
-        <label class="form-check-label" for="pickUp">
+						<div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+							<div *ngIf="f.time.errors.required">Time is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-4 col-md-4">PickUp and drop : <span class="reqField">*</span></div>
+					<div class="col-sm-8 col-md-8">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="gridCheck1"  formControlName="pickUp"
+           [ngClass]="{ 'is-invalid': submitted && f.pickUp.errors }">
+							<label class="form-check-label" for="pickUp">
           Pick up
         </label>
-         <div  *ngIf="submitted && f.pickUp.errors"  class="invalid-feedback" >
-          <div *ngIf="f.pickUp.errors.required">Pickup is required</div>
-        </div>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="name"  formControlName="pickUp"                 
+							<div *ngIf="submitted && f.pickUp.errors" class="invalid-feedback">
+								<div *ngIf="f.pickUp.errors.required">Pickup is required</div>
+							</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="name"  formControlName="pickUp"
            [ngClass]="{ 'is-invalid': submitted && f.pickUp.errors }">
-        <label class="form-check-label" for="pickUp">
+							<label class="form-check-label" for="pickUp">
           Drop
         </label>
-         <div  *ngIf="submitted && f.pickUp.errors"  class="invalid-feedback" >
-                  <div *ngIf="f.pickUp.errors.required">Pickup is required</div>
-                </div>
-      </div>
-    </div>
-  </div>
-   <!-- Alert :: start -->
-       <alert
-       *ngIf="alertMsg === true"
-       type="success"
-       dismissOnTimeout="3000"
-       (onClosed)="alertMsg = true"
-     >
-       Service booking done successfully!!
-     </alert>
-     <alert
-       *ngIf="alertMsg === false"
-       type="warning"
-       dismissOnTimeout="3000"
-       (onClosed)="alertMsg = false"
-     >
-       Filled Required fields.
-     </alert>
-    <!-- Alert :: End -->
-  <div class="form-group row">   
-    <div class="col-sm-10" style="text-align: center">
-      <button type="submit" class="btn btn-primary" (click)="openModal(template)">Book Service</button>
-    </div>
-  </div>
-  </form>
- </div><br><br>
+							<div *ngIf="submitted && f.pickUp.errors" class="invalid-feedback">
+								<div *ngIf="f.pickUp.errors.required">Pickup is required</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Alert :: start -->
+				<alert *ngIf="alertMsg === true" type="success" dismissOnTimeout="3000" (onClosed)="alertMsg = true">
+					Service booking done successfully!!
+				</alert>
+				<alert *ngIf="alertMsg === false" type="warning" dismissOnTimeout="3000" (onClosed)="alertMsg = false">
+					Filled Required fields.
+				</alert>
+				<!-- Alert :: End -->
+				<div class="form-group row">
+					<div class="col-sm-10" style="text-align: center">
+						<button type="submit" class="btn btn-primary" (click)="openModal(template)">Book Service</button>
+					</div>
+				</div>
+	</form>
+</div><br><br>
 
-  <ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+<ng-template #template>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Modal</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="modal-body">
-   <p> Are you sure to book the service ? </p><br>
-    <button type="reset" class="btn btn-danger float-right" (click)="modalRef.hide()">No</button>
-    <button type="submit" class="btn btn-success float-right" (click)="onFormSubmit(ServiceForm.value)" (click)="modalRef.hide()" >Yes</button>
-  </div>
+	</div>
+	<div class="modal-body">
+		<p> Are you sure to book the service ? </p><br>
+		<button type="reset" class="btn btn-danger float-right" (click)="modalRef.hide()">No</button>
+		<button type="submit" class="btn btn-success float-right" (click)="onFormSubmit(ServiceForm.value)" (click)="modalRef.hide()" >Yes</button>
+	</div>
 </ng-template>
 
 
 <h3 style="text-align: center">Car Service List</h3><br>
- <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Mobile</th>
-      <th scope="col">Email</th>
-      <th scope="col">Vehicle Number</th>
-      <th scope="col">Brand </th>
-      <th scope="col">Type</th>
-       <th scope="col">Fuel </th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Pick and drop</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let data of dataArray; let i=index">
-    <tr>
-      <th scope="row">{{ i+1 }}</th>
-      <td>{{ data.name }}</td>
-      <td>{{ data.phoneNumber }}</td>
-      <td>{{ data.email }}</td>
-      <td>{{ data.vehicleNumber }}</td>
-      <td>{{ data.brand }}</td>
-      <td>{{ data.model }}</td>
-      <td>{{ data.fuel }}</td>
-      <td>{{ data.date }}</td>
-      <td>{{ data.time }}</td>
-      <td>{{ data.pickup }}</td>
-      <td><button class="btn btn-danger" (click)="onDelete(data.id)">Cancel</button></td>
-    </tr>
-  </tbody>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">Mobile</th>
+			<th scope="col">Email</th>
+			<th scope="col">Vehicle Number</th>
+			<th scope="col">Brand </th>
+			<th scope="col">Type</th>
+			<th scope="col">Fuel </th>
+			<th scope="col">Date</th>
+			<th scope="col">Time</th>
+			<th scope="col">Pick and drop</th>
+			<!-- <th scope="col">Actions</th> -->
+		</tr>
+	</thead>
+	<tbody *ngFor="let data of dataArray; let i=index">
+		<tr>
+			<th scope="row">{{ i+1 }}</th>
+			<td>{{ data.name }}</td>
+			<td>{{ data.phoneNumber }}</td>
+			<td>{{ data.email }}</td>
+			<td>{{ data.vehicleNumber }}</td>
+			<td>{{ data.brand }}</td>
+			<td>{{ data.model }}</td>
+			<td>{{ data.fuel }}</td>
+			<td>{{ data.date }}</td>
+			<td>{{ data.time }}</td>
+			<td>{{ data.pickup }}</td>
+			<!-- <td><button class="btn btn-danger" (click)="onDelete(data.id)">Cancel</button></td> -->
+		</tr>
+	</tbody>
 </table>
